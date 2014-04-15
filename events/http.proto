@@ -1,0 +1,42 @@
+package events;
+
+message UUID {
+    required uint64 low = 1;
+    required uint64 high = 2;
+}
+
+enum PeerType {
+    Client = 1;
+    Server = 2;
+}
+
+message HttpStart {
+
+    enum Method {
+        GET = 1;
+        POST = 2;
+        PUT = 3;
+        DELETE = 4;
+        HEAD = 5;
+    }
+
+    required int64 timestamp = 1;
+    required UUID requestId = 2;
+    required PeerType peerType = 3;
+    required Method method = 4;
+    required string uri = 5;
+    required string remoteAddress = 6;
+    required string userAgent = 7;
+
+    optional UUID parentRequestId = 8;
+    optional UUID applicationId = 9;
+    optional int32 instanceIndex = 10;
+}
+
+message HttpStop {
+    required int64 timestamp = 1;
+    required UUID requestId = 2;
+    required PeerType peerType = 3;
+    required int32 statusCode = 4;
+    required int64 contentLength = 5;
+}

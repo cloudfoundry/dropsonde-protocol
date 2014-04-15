@@ -1,0 +1,20 @@
+package events;
+
+import "heartbeat.proto";
+
+import "http.proto";
+
+message Envelope {
+    enum EventType {
+        Heartbeat = 1;
+        HttpStart = 2;
+        HttpStop = 3;
+    }
+
+    required string origin = 1;
+    required EventType eventType = 2;
+
+    optional Heartbeat heartbeat = 3;
+    optional HttpStart httpStart = 4;
+    optional HttpStop httpStop = 5;
+}
