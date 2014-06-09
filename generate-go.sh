@@ -1,8 +1,14 @@
 #!/bin/bash
 
+dir_resolve()
+{
+cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any error messages but return exit status
+echo "`pwd -P`" # output full, link-resolved path
+}
+
 set -e
 
-TARGET=$1
+TARGET=`dir_resolve $1`
 if [ -z "$TARGET" ]; then
     echo 'USAGE: `generate-go.sh TARGET_PATH`'
     echo ''
@@ -12,4 +18,6 @@ fi
 
 go install code.google.com/p/gogoprotobuf/protoc-gen-gogo
 
-protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET events/*.proto
+pushd events
+protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET *.proto
+popd
