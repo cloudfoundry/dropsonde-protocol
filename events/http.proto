@@ -35,10 +35,11 @@ message HttpStart {
 
 message HttpStop {
     required int64 timestamp = 1;
-    required UUID requestId = 2;
-    required PeerType peerType = 3;
-    required int32 statusCode = 4;
-    required int64 contentLength = 5;
+    required string uri = 2;
+    required UUID requestId = 3;
+    required PeerType peerType = 4;
+    required int32 statusCode =5;
+    required int64 contentLength = 6;
 
-    optional UUID applicationId = 6;
+    optional UUID applicationId = 7;
 }
