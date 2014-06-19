@@ -31,6 +31,7 @@ message HttpStart {
     optional UUID parentRequestId = 8;
     optional UUID applicationId = 9;
     optional int32 instanceIndex = 10;
+    optional string instanceId = 11;
 }
 
 message HttpStop {
