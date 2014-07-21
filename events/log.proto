@@ -8,4 +8,5 @@ message LogLine {
   optional uint32 severity = 4;
   optional string app_id = 5;
   optional string source_name = 6;
+  optional string hostname = 7;
 }
