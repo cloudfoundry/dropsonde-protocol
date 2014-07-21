@@ -1,0 +1,11 @@
+package events;
+
+message LogLine {
+  required int64 timestamp = 1;
+  required bytes payload = 2;
+
+  optional uint32 pid = 3;
+  optional uint32 severity = 4;
+  optional string app_id = 5;
+  optional string source_name = 6;
+}

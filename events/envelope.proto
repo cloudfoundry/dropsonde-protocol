@@ -4,17 +4,25 @@ import "heartbeat.proto";
 
 import "http.proto";
 
+import "log.proto";
+
 message Envelope {
     enum EventType {
         Heartbeat = 1;
         HttpStart = 2;
         HttpStop = 3;
+        HttpEvent = 4;
+        LogLine = 5;
     }
 
     required string origin = 1;
     required EventType eventType = 2;
 
+    optional int64 timestamp = 6;
+
     optional Heartbeat heartbeat = 3;
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;
+    optional HttpEvent httpEvent = 7;
+    optional LogLine logLine = 8;
 }

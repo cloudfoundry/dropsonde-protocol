@@ -10,16 +10,15 @@ enum PeerType {
     Server = 2;
 }
 
+enum Method {
+    GET = 1;
+    POST = 2;
+    PUT = 3;
+    DELETE = 4;
+    HEAD = 5;
+}
+
 message HttpStart {
-
-    enum Method {
-        GET = 1;
-        POST = 2;
-        PUT = 3;
-        DELETE = 4;
-        HEAD = 5;
-    }
-
     required int64 timestamp = 1;
     required UUID requestId = 2;
     required PeerType peerType = 3;
@@ -43,4 +42,25 @@ message HttpStop {
     required int64 contentLength = 6;
 
     optional UUID applicationId = 7;
+}
+
+message HttpEvent {
+    required int64 requestedAt = 1;
+    required int64 completedAt = 2;
+
+    required UUID requestId = 3;
+    required PeerType peerType = 4;
+    required Method method = 5;
+    required string uri = 6;
+    required string remoteAddress = 7;
+    required string userAgent = 8;
+
+
+    required int32 statusCode =9;
+    required int64 contentLength = 10;
+
+    optional UUID parentRequestId = 11;
+    optional UUID applicationId = 12;
+    optional int32 instanceIndex = 13;
+    optional string instanceId = 14;
 }

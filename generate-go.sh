@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 dir_resolve()
 {
@@ -16,7 +16,7 @@ if [ -z "$TARGET" ]; then
     exit 1
 fi
 
-go install code.google.com/p/gogoprotobuf/protoc-gen-gogo
+go get code.google.com/p/gogoprotobuf/{proto,protoc-gen-gogo,gogoproto}
 
 pushd events
 protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET *.proto
