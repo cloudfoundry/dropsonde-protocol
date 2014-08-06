@@ -44,9 +44,9 @@ message HttpStop {
     optional UUID applicationId = 7;
 }
 
-message HttpEvent {
-    required int64 requestedAt = 1;
-    required int64 completedAt = 2;
+message HttpStartStop {
+    required int64 startTimestamp = 1;
+    required int64 stopTimestamp = 2;
 
     required UUID requestId = 3;
     required PeerType peerType = 4;
@@ -55,8 +55,7 @@ message HttpEvent {
     required string remoteAddress = 7;
     required string userAgent = 8;
 
-
-    required int32 statusCode =9;
+    required int32 statusCode = 9;
     required int64 contentLength = 10;
 
     optional UUID parentRequestId = 11;

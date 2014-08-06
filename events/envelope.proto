@@ -11,7 +11,7 @@ message Envelope {
         Heartbeat = 1;
         HttpStart = 2;
         HttpStop = 3;
-        HttpEvent = 4;
+        HttpStartStop = 4;
         LogLine = 5;
     }
 
@@ -23,6 +23,6 @@ message Envelope {
     optional Heartbeat heartbeat = 3;
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;
-    optional HttpEvent httpEvent = 7;
+    optional HttpStartStop httpStartStop = 7;
     optional LogLine logLine = 8;
 }
