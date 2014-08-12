@@ -12,7 +12,7 @@ message Envelope {
         HttpStart = 2;
         HttpStop = 3;
         HttpStartStop = 4;
-        LogLine = 5;
+        LogMessage = 5;
     }
 
     required string origin = 1;
@@ -24,5 +24,5 @@ message Envelope {
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;
     optional HttpStartStop httpStartStop = 7;
-    optional LogLine logLine = 8;
+    optional LogMessage logMessage = 8;
 }

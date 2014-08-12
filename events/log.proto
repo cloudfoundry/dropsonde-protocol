@@ -1,12 +1,15 @@
 package events;
 
-message LogLine {
-  required int64 timestamp = 1;
-  required bytes payload = 2;
+message LogMessage {
+    enum MessageType {
+        OUT = 1;
+        ERR = 2;
+    }
 
-  optional uint32 pid = 3;
-  optional uint32 severity = 4;
-  optional string app_id = 5;
-  optional string source_name = 6;
-  optional string hostname = 7;
+    required bytes message = 1;
+    required MessageType message_type = 2;
+    required int64 timestamp = 3;
+    optional string app_id = 4;
+    optional string source_type = 5;
+    optional string source_instance = 6;
 }
