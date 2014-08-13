@@ -1,10 +1,9 @@
 package events;
 
 import "heartbeat.proto";
-
 import "http.proto";
-
 import "log.proto";
+import "metric.proto";
 
 message Envelope {
     enum EventType {
@@ -13,6 +12,7 @@ message Envelope {
         HttpStop = 3;
         HttpStartStop = 4;
         LogMessage = 5;
+        ValueMetric = 6;
     }
 
     required string origin = 1;
@@ -25,4 +25,5 @@ message Envelope {
     optional HttpStop httpStop = 5;
     optional HttpStartStop httpStartStop = 7;
     optional LogMessage logMessage = 8;
+    optional ValueMetric valueMetric = 9;
 }

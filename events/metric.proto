@@ -1,0 +1,6 @@
+package events;
+
+message ValueMetric {
+    required string name = 1;
+    required uint64 value = 2;
+}
