@@ -13,6 +13,7 @@ message Envelope {
         HttpStartStop = 4;
         LogMessage = 5;
         ValueMetric = 6;
+        CounterEvent = 7;
     }
 
     required string origin = 1;
@@ -26,4 +27,5 @@ message Envelope {
     optional HttpStartStop httpStartStop = 7;
     optional LogMessage logMessage = 8;
     optional ValueMetric valueMetric = 9;
+    optional CounterEvent counterEvent = 10;
 }

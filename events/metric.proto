@@ -5,3 +5,7 @@ message ValueMetric {
     required double value = 2;
     required string unit = 3;
 }
+
+message CounterEvent {
+    required string name = 1;
+}
