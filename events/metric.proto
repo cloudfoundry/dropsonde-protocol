@@ -8,4 +8,5 @@ message ValueMetric {
 
 message CounterEvent {
     required string name = 1;
+    required uint64 delta = 2;
 }
