@@ -30,5 +30,5 @@ message Envelope {
     optional LogMessage logMessage = 8;
     optional ValueMetric valueMetric = 9;
     optional CounterEvent counterEvent = 10;
-    optional Error errorEvent = 11;
+    optional Error error = 11;
 }
