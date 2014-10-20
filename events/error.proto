@@ -1,0 +1,7 @@
+package events;
+
+message Error {
+    required string source = 1;
+    required int32 code = 2;
+    required string message = 3;
+}
