@@ -5,6 +5,11 @@ Protocol buffer protocol for dropsonde
 ## Event types
 Please see the [events README](events/README.md).
 
+## Libraries using this protocol
+
+* [Dropsonde](https://github.com/cloudfoundry/dropsonde) is a Go library for applications that wish to emit messages in this format.
+* [NOAA](https://github.com/cloudfoundry/noaa) is a library (also in Go) for applications that wish to consume messages from the Cloud Foundry [metric system](https://github.com/cloudfoundry/loggregator). 
+
 ## Generating code
 
 ### Go
