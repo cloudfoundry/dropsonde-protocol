@@ -1,7 +1,8 @@
 package events;
 
+/// A Heartbeat event both indicates liveness of the emitter, and communicates counts of events processed.
 message Heartbeat {
-    required uint64 sentCount = 1;
-    required uint64 receivedCount = 2;
-    required uint64 errorCount = 3;
+    required uint64 sentCount = 1;     /// Number of events sent by this emitter.
+    required uint64 receivedCount = 2; /// Number of events received by this emitter from the host process.
+    required uint64 errorCount = 3;    /// Number of errors encountered while sending.
 }
