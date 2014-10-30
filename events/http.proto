@@ -1,10 +1,6 @@
 package events;
 
-/// Type representing a 128-bit UUID.
-message UUID {
-    required uint64 low = 1;
-    required uint64 high = 2;
-}
+import "uuid.proto";
 
 /// Type of peer handling request.
 enum PeerType {

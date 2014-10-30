@@ -12,12 +12,18 @@ TARGET=`dir_resolve $1`
 if [ -z "$TARGET" ]; then
     echo 'USAGE: `generate-go.sh TARGET_PATH`'
     echo ''
-    echo 'TARGET_PATH is where you would like the *.go files to be generated.'
+    echo 'TARGET_PATH is where you would like the control and events packages to be generated.'
     exit 1
 fi
 
 go get code.google.com/p/gogoprotobuf/{proto,protoc-gen-gogo,gogoproto}
 
 pushd events
-protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET *.proto
+mkdir -p $TARGET/events
+protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET/events *.proto
+popd
+
+pushd control
+mkdir -p $TARGET/control
+protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET/control *.proto
 popd

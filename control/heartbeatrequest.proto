@@ -1,0 +1,6 @@
+package control;
+
+
+/// A HeartbeatRequest command elicits a heartbeat from a component or app
+message HeartbeatRequest {
+}
