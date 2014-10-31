@@ -2,8 +2,11 @@
 
 Protocol buffer protocol for dropsonde
 
-## Event types
-Please see the [events README](events/README.md).
+## Message types
+Please see the following
+
+* [events README](events/README.md)
+* [control README](control/README.md)
 
 ## Libraries using this protocol
 
@@ -28,9 +31,11 @@ For C++, Java and Python, Google provides [tutorials](https://developers.google.
 
 Please see [this list](https://github.com/google/protobuf/wiki/Third-Party-Add-ons#Programming_Languages) for working with protocol buffers in other languages.
 
-### Event documentation
-The events README is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run
+### Message documentation
+Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run
 ```
 cd events
+protoc --doc_out=markdown,README.md:. *.proto
+cd ../control
 protoc --doc_out=markdown,README.md:. *.proto
 ```
