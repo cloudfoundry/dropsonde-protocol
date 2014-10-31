@@ -44,7 +44,7 @@ Type of the wrapped control.
 
 <a name="control.HeartbeatRequest"/>
 ### HeartbeatRequest
-A HeartbeatRequest command elicits a heartbeat from a component or app
+A HeartbeatRequest command elicits a heartbeat from a component or app. When a HeartbeatRequest is received, a Heartbeat event MUST be returned with controlMessageIdentifier set to the UUID received in the request.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
