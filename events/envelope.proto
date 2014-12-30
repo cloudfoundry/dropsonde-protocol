@@ -18,6 +18,7 @@ message Envelope {
         ValueMetric = 6;
         CounterEvent = 7;
         Error = 8;
+        ContainerMetric = 9;
     }
 
     required string origin = 1;               /// Unique description of the origin of this event.
@@ -33,4 +34,5 @@ message Envelope {
     optional ValueMetric valueMetric = 9;
     optional CounterEvent counterEvent = 10;
     optional Error error = 11;
+    optional ContainerMetric containerMetric = 12;
 }

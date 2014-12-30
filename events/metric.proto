@@ -1,5 +1,7 @@
 package events;
 
+import "uuid.proto";
+
 /// A ValueMetric indicates the value of a metric at an instant in time.
 message ValueMetric {
     required string name = 1;  /// Name of the metric. Must be consistent for downstream consumers to associate events semantically.
@@ -12,3 +14,13 @@ message CounterEvent {
     required string name = 1;  /// Name of the counter. Must be consistent for downstream consumers to associate events semantically.
     required uint64 delta = 2; /// Amount by which to increment the counter.
 }
+
+/// A ContainerMetric records resource usage of an app in a container.
+ message ContainerMetric {
+    required UUID applicationId = 1;   /// UUID of the contained application.
+    required int32 instanceIndex = 2;  /// Instance index of the contained application. (This, with applicationId, should uniquely identify a container.)
+
+    required double cpuPercentage = 3; /// CPU used, on a scale of 0 to 100.
+    required uint64 memoryBytes = 4;   /// Bytes of memory used.
+    required uint64 diskBytes = 5;     /// Bytes of disk used.
+ }

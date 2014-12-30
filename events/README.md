@@ -13,15 +13,17 @@
  * [HttpStart](#events.HttpStart)
  * [HttpStartStop](#events.HttpStartStop)
  * [HttpStop](#events.HttpStop)
- * [UUID](#events.UUID)
  * [Method](#events.Method)
  * [PeerType](#events.PeerType)
 * [log.proto](#log.proto)
  * [LogMessage](#events.LogMessage)
  * [LogMessage.MessageType](#events.LogMessage.MessageType)
 * [metric.proto](#metric.proto)
+ * [ContainerMetric](#events.ContainerMetric)
  * [CounterEvent](#events.CounterEvent)
  * [ValueMetric](#events.ValueMetric)
+* [uuid.proto](#uuid.proto)
+ * [UUID](#events.UUID)
 * [Scalar Value Types](#scalar-value-types)
 
 <a name="envelope.proto"/>
@@ -46,6 +48,7 @@ Envelope wraps an Event and adds metadata.
 | valueMetric | ValueMetric | optional |  |
 | counterEvent | CounterEvent | optional |  |
 | error | Error | optional |  |
+| containerMetric | ContainerMetric | optional |  |
 
 
 <a name="events.Envelope.EventType"/>
@@ -62,6 +65,7 @@ Type of the wrapped event.
 | ValueMetric | 6 |  |
 | CounterEvent | 7 |  |
 | Error | 8 |  |
+| ContainerMetric | 9 |  |
 
 <a name="error.proto"/>
 <p align="right"><a href="#top">Top</a></p>
@@ -93,6 +97,7 @@ A Heartbeat event both indicates liveness of the emitter, and communicates count
 | sentCount | uint64 | required | Number of events sent by this emitter. |
 | receivedCount | uint64 | required | Number of events received by this emitter from the host process. |
 | errorCount | uint64 | required | Number of errors encountered while sending. |
+| controlMessageIdentifier | UUID | optional | The id of the control message which requested this heartbeat |
 
 
 <a name="http.proto"/>
@@ -153,15 +158,6 @@ An HttpStop event is emitted when a client receives a response to its request (o
 | contentLength | int64 | required | Length of response (bytes). |
 | applicationId | UUID | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
 
-<a name="events.UUID"/>
-### UUID
-Type representing a 128-bit UUID.
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| low | uint64 | required |  |
-| high | uint64 | required |  |
-
 
 <a name="events.Method"/>
 ### Method
@@ -217,6 +213,18 @@ MessageType stores the destination of the message (corresponding to STDOUT or ST
 
 ## metric.proto
 
+<a name="events.ContainerMetric"/>
+### ContainerMetric
+A ContainerMetric records resource usage of an app in a container.
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| applicationId | UUID | required | UUID of the contained application. |
+| instanceIndex | int32 | required | Instance index of the contained application. (This, with applicationId, should uniquely identify a container.) |
+| cpuPercentage | double | required | CPU used, on a scale of 0 to 100. |
+| memoryBytes | uint64 | required | Bytes of memory used. |
+| diskBytes | uint64 | required | Bytes of disk used. |
+
 <a name="events.CounterEvent"/>
 ### CounterEvent
 A CounterEvent represents the increment of a counter. It contains only the change in the value; it is the responsibility of downstream consumers to maintain the value of the counter.
@@ -235,6 +243,21 @@ A ValueMetric indicates the value of a metric at an instant in time.
 | name | string | required | Name of the metric. Must be consistent for downstream consumers to associate events semantically. |
 | value | double | required | Value at the time of event emission. |
 | unit | string | required | Unit of the metric. Please see http://metrics20.org/spec/#units for ideas; SI units/prefixes are recommended where applicable. Should be consistent for the life of the metric (consumers are expected to report, but not interpret, prefixes). |
+
+
+<a name="uuid.proto"/>
+<p align="right"><a href="#top">Top</a></p>
+
+## uuid.proto
+
+<a name="events.UUID"/>
+### UUID
+Type representing a 128-bit UUID.
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| low | uint64 | required |  |
+| high | uint64 | required |  |
 
 
 
