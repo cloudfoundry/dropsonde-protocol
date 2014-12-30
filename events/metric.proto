@@ -17,7 +17,7 @@ message CounterEvent {
 
 /// A ContainerMetric records resource usage of an app in a container.
  message ContainerMetric {
-    required UUID applicationId = 1;   /// UUID of the contained application.
+    required string applicationId = 1; /// ID of the contained application.
     required int32 instanceIndex = 2;  /// Instance index of the contained application. (This, with applicationId, should uniquely identify a container.)
 
     required double cpuPercentage = 3; /// CPU used, on a scale of 0 to 100.
