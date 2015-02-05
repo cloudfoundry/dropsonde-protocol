@@ -13,7 +13,7 @@ message ValueMetric {
 message CounterEvent {
     required string name = 1;  /// Name of the counter. Must be consistent for downstream consumers to associate events semantically.
     required uint64 delta = 2; /// Amount by which to increment the counter.
-    optional uint64 total = 3; /// Total value of the counter. By default, this may be left unset and downstream components will track the total.
+    optional uint64 total = 3; /// Total value of the counter. This will be overridden by Metron, which internally tracks the total of each named Counter it receives.
 }
 
 /// A ContainerMetric records resource usage of an app in a container.

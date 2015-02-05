@@ -219,7 +219,7 @@ A ContainerMetric records resource usage of an app in a container.
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| applicationId | UUID | required | UUID of the contained application. |
+| applicationId | string | required | ID of the contained application. |
 | instanceIndex | int32 | required | Instance index of the contained application. (This, with applicationId, should uniquely identify a container.) |
 | cpuPercentage | double | required | CPU used, on a scale of 0 to 100. |
 | memoryBytes | uint64 | required | Bytes of memory used. |
@@ -233,6 +233,7 @@ A CounterEvent represents the increment of a counter. It contains only the chang
 | ----- | ---- | ----- | ----------- |
 | name | string | required | Name of the counter. Must be consistent for downstream consumers to associate events semantically. |
 | delta | uint64 | required | Amount by which to increment the counter. |
+| total | uint64 | optional | Total value of the counter. This will be overridden by Metron, which internally tracks the total of each named Counter it receives. |
 
 <a name="events.ValueMetric"/>
 ### ValueMetric
