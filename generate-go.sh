@@ -20,10 +20,10 @@ go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,gogoproto}
 
 pushd events
 mkdir -p $TARGET/events
-protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET/events *.proto
+protoc --plugin=$(which protoc-gen-gogo) --gogo_out=$TARGET/events *.proto
 popd
 
 pushd control
 mkdir -p $TARGET/control
-protoc --plugin=$GOPATH/bin/protoc-gen-gogo --gogo_out=$TARGET/control *.proto
+protoc --plugin=$(which protoc-gen-gogo) --gogo_out=$TARGET/control *.proto
 popd
