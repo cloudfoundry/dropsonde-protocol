@@ -35,4 +35,12 @@ message Envelope {
     optional CounterEvent counterEvent = 10;
     optional Error error = 11;
     optional ContainerMetric containerMetric = 12;
+
+    repeated Tag tags = 13;                    /// Optional list of key-value pairs. Should hold meta/descriptive information about the event contained in this envelope, not metric data itself.
+}
+
+/// Tag holds a key-value pair
+message Tag {
+    required string key = 1;
+    required string value = 2;
 }
