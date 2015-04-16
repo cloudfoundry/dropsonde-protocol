@@ -26,6 +26,11 @@ message Envelope {
 
     optional int64 timestamp = 6;             /// UNIX timestamp (in nanoseconds) event was wrapped in this Envelope.
 
+    optional string deployment = 13;          /// Deployment name (used to uniquely identify source).
+    optional string job = 14;                 /// Job name (used to uniquely identify source).
+    optional string index = 15;               /// Index of job (used to uniquely identify source).
+    optional string ip = 16;                  /// IP address (used to uniquely identify source).
+
     optional Heartbeat heartbeat = 3;
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;
@@ -35,12 +40,5 @@ message Envelope {
     optional CounterEvent counterEvent = 10;
     optional Error error = 11;
     optional ContainerMetric containerMetric = 12;
-
-    repeated Tag tags = 13;                    /// Optional list of key-value pairs. Should hold meta/descriptive information about the event contained in this envelope, not metric data itself.
 }
 
-/// Tag holds a key-value pair
-message Tag {
-    required string key = 1;
-    required string value = 2;
-}
