@@ -4,7 +4,6 @@
 ## Table of Contents
 * [envelope.proto](#envelope.proto)
  * [Envelope](#events.Envelope)
- * [Tag](#events.Tag)
  * [Envelope.EventType](#events.Envelope.EventType)
 * [error.proto](#error.proto)
  * [Error](#events.Error)
@@ -41,6 +40,10 @@ Envelope wraps an Event and adds metadata.
 | origin | [string](#string) | required | Unique description of the origin of this event. |
 | eventType | [Envelope.EventType](#events.Envelope.EventType) | required | Type of wrapped event. Only the optional field corresponding to the value of eventType should be set. |
 | timestamp | [int64](#int64) | optional | UNIX timestamp (in nanoseconds) event was wrapped in this Envelope. |
+| deployment | [string](#string) | optional | Deployment name (used to uniquely identify source). |
+| job | [string](#string) | optional | Job name (used to uniquely identify source). |
+| index | [string](#string) | optional | Index of job (used to uniquely identify source). |
+| ip | [string](#string) | optional | IP address (used to uniquely identify source). |
 | heartbeat | [Heartbeat](#events.Heartbeat) | optional |  |
 | httpStart | [HttpStart](#events.HttpStart) | optional |  |
 | httpStop | [HttpStop](#events.HttpStop) | optional |  |
@@ -50,16 +53,6 @@ Envelope wraps an Event and adds metadata.
 | counterEvent | [CounterEvent](#events.CounterEvent) | optional |  |
 | error | [Error](#events.Error) | optional |  |
 | containerMetric | [ContainerMetric](#events.ContainerMetric) | optional |  |
-| tags | [Tag](#events.Tag) | repeated | Optional list of key-value pairs. Should hold meta/descriptive information about the event contained in this envelope, not metric data itself. |
-
-<a name="events.Tag"/>
-### Tag
-Tag holds a key-value pair
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| key | [string](#string) | required |  |
-| value | [string](#string) | required |  |
 
 
 <a name="events.Envelope.EventType"/>
