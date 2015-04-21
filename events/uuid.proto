@@ -1,4 +1,6 @@
 package events;
+option java_package = "org.cloudfoundry.dropsonde.events";
+option java_outer_classname = "UuidFactory";
 
 /// Type representing a 128-bit UUID.
 message UUID {

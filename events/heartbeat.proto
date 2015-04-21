@@ -1,4 +1,6 @@
 package events;
+option java_package = "org.cloudfoundry.dropsonde.events";
+option java_outer_classname = "HeartbeatFactory";
 
 import "uuid.proto";
 
