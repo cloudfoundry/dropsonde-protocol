@@ -1,4 +1,11 @@
 package events;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.unmarshaler_all) = true;
+
 option java_package = "org.cloudfoundry.dropsonde.events";
 option java_outer_classname = "UuidFactory";
 
