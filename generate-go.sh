@@ -16,7 +16,7 @@ if [ -z "$TARGET" ]; then
     exit 1
 fi
 
-go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,gogoproto}
+go get github.com/jmtuley/protobuf/{proto,protoc-gen-gogo,gogoproto}
 
 pushd events
 mkdir -p $TARGET/events
