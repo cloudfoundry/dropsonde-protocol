@@ -1,4 +1,6 @@
 package control;
+option java_package = "org.cloudfoundry.dropsonde.control";
+option java_outer_classname = "HeartbeatRequestFactory";
 
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 

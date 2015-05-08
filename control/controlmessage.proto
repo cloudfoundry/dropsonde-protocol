@@ -1,4 +1,6 @@
 package control;
+option java_package = "org.cloudfoundry.dropsonde.control";
+option java_outer_classname = "ContolMessageFactory";
 
 import "heartbeatrequest.proto";
 import "uuid.proto";

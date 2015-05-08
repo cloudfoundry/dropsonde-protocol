@@ -6,7 +6,7 @@ cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any 
 echo "`pwd -P`" # output full, link-resolved path
 }
 
-set -e
+set -ex
 
 TARGET=`dir_resolve $1`
 if [ -z "$TARGET" ]; then
