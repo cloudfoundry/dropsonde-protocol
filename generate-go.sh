@@ -18,12 +18,25 @@ fi
 
 go get github.com/gogo/protobuf/{proto,protoc-gen-gogo,gogoproto}
 
-pushd events
+rm -rf tmp
+mkdir -p tmp/events tmp/control
+
 mkdir -p $TARGET/events
+cp events/*.proto tmp/events/
+for i in $(ls -1 events/*.proto); do
+    cat go/go_preamble.proto $i > tmp/events/$(basename $i)
+done
+
+mkdir -p $TARGET/control
+cp control/*.proto tmp/control/
+for i in $(ls -1 control/*.proto); do
+    cat go/go_preamble.proto $i > tmp/control/$(basename $i)
+done
+
+pushd tmp/events
 protoc --plugin=$(which protoc-gen-gogo) --gogo_out=$TARGET/events --proto_path=$GOPATH/src:$GOPATH/src/github.com/gogo/protobuf/protobuf:. *.proto
 popd
 
-pushd control
-mkdir -p $TARGET/control
+pushd tmp/control
 protoc --plugin=$(which protoc-gen-gogo) --gogo_out=$TARGET/control --proto_path=$GOPATH/src:$GOPATH/src/github.com/gogo/protobuf/protobuf:. *.proto
 popd
