@@ -13,22 +13,15 @@ Please see the following for detailed descriptions of each type:
 * [control README](control/README.md)
 
 
-## Libraries using this protocol
+## Library using this protocol
 
-* [Dropsonde](https://github.com/cloudfoundry/dropsonde) is a Go library for applications that wish to emit messages in this format.
-* [NOAA](https://github.com/cloudfoundry/noaa) is a library (also in Go) for applications that wish to consume messages from the Cloud Foundry [metric system](https://github.com/cloudfoundry/loggregator). 
+* [Dropsonde Protocol Go](https://github.com/cloudfoundry/dropsonde-protocol-go) is a generated Go library for components that wish to emit messages to or consume messages from the Cloud Foundry [metric system](https://github.com/cloudfoundry/loggregator).
 
 ## Generating code
 
 ### Go
-1. Install [protobuf](https://github.com/google/protobuf) 
-   ```
-   brew install protobuf
-   ```
-1. Generate go code
-   ```
-   ./generate-go.sh TARGET_PATH
-   ```
+
+Code generation for Go has moved to the [Dropsonde Protocol Go](https://github.com/cloudfoundry/dropsonde-protocol-go) library.
 
 ### Other languages
 
@@ -37,7 +30,7 @@ For C++, Java and Python, Google provides [tutorials](https://developers.google.
 Please see [this list](https://github.com/google/protobuf/wiki/Third-Party-Add-ons#Programming_Languages) for working with protocol buffers in other languages.
 
 ### Message documentation
-Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run
+Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run:
 ```
 cd events
 protoc --doc_out=markdown,README.md:. *.proto
