@@ -21,6 +21,7 @@ message Envelope {
         CounterEvent = 7;
         Error = 8;
         ContainerMetric = 9;
+        BogusMetric = 10;
     }
 
     required string origin = 1;               /// Unique description of the origin of this event.
