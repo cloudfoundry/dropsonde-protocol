@@ -10,18 +10,17 @@ This protocol forms the backbone of the [Doppler](https://github.com/cloudfoundr
 Please see the following for detailed descriptions of each type:
 
 * [events README](events/README.md)
-* [control README](control/README.md)
 
 
 ## Library using this protocol
 
-* [Dropsonde Protocol Go](https://github.com/cloudfoundry/dropsonde-protocol-go) is a generated Go library for components that wish to emit messages to or consume messages from the Cloud Foundry [metric system](https://github.com/cloudfoundry/loggregator).
+* [Sonde-Go](https://github.com/cloudfoundry/sonde-go) is a generated Go library for components that wish to emit messages to or consume messages from the Cloud Foundry [metric system](https://github.com/cloudfoundry/loggregator).
 
 ## Generating code
 
 ### Go
 
-Code generation for Go has moved to the [Dropsonde Protocol Go](https://github.com/cloudfoundry/dropsonde-protocol-go) library.
+Code generation for Go has moved to the [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library.
 
 ### Other languages
 
@@ -42,6 +41,3 @@ protoc --doc_out=markdown,README.md:. *.proto
 
 ### Event emission
 Dropsonde is intended to be a "fire and forget" protocol, in the sense that an emitter should send events to its receiver with no expectation of acknowledgement. There is no "handshake" step; the emitter simply begins emitting to a known address of an expected recipient. 
-
-### Heartbeat requests
-One of the control messages available is the [HeartbeatRequest](control/README.md#control.HeartbeatRequest). When a process implementing Dropsonde receives this message, it MUST respond with with a [Heartbeat](events/README.md#events.Heartbeat) message. That `Heartbeat` should include the same `UUID` as was received in the containing `ControlMessage`.
