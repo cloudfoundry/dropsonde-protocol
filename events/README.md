@@ -7,8 +7,6 @@
  * [Envelope.EventType](#events.Envelope.EventType)
 * [error.proto](#error.proto)
  * [Error](#events.Error)
-* [heartbeat.proto](#heartbeat.proto)
- * [Heartbeat](#events.Heartbeat)
 * [http.proto](#http.proto)
  * [HttpStart](#events.HttpStart)
  * [HttpStartStop](#events.HttpStartStop)
@@ -44,7 +42,6 @@ Envelope wraps an Event and adds metadata.
 | job | [string](#string) | optional | Job name (used to uniquely identify source). |
 | index | [string](#string) | optional | Index of job (used to uniquely identify source). |
 | ip | [string](#string) | optional | IP address (used to uniquely identify source). |
-| heartbeat | [Heartbeat](#events.Heartbeat) | optional |  |
 | httpStart | [HttpStart](#events.HttpStart) | optional |  |
 | httpStop | [HttpStop](#events.HttpStop) | optional |  |
 | httpStartStop | [HttpStartStop](#events.HttpStartStop) | optional |  |
@@ -61,7 +58,6 @@ Type of the wrapped event.
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| Heartbeat | 1 |  |
 | HttpStart | 2 |  |
 | HttpStop | 3 |  |
 | HttpStartStop | 4 |  |
@@ -85,23 +81,6 @@ An Error event represents an error in the originating process.
 | source | [string](#string) | required | Source of the error. This may or may not be the same as the Origin in the envelope. |
 | code | [int32](#int32) | required | Numeric error code. This is provided for programmatic responses to the error. |
 | message | [string](#string) | required | Error description (preferably human-readable). |
-
-
-<a name="heartbeat.proto"/>
-<p align="right"><a href="#top">Top</a></p>
-
-## heartbeat.proto
-
-<a name="events.Heartbeat"/>
-### Heartbeat
-A Heartbeat event both indicates liveness of the emitter, and communicates counts of events processed.
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| sentCount | [uint64](#uint64) | required | Number of events sent by this emitter. |
-| receivedCount | [uint64](#uint64) | required | Number of events received by this emitter from the host process. |
-| errorCount | [uint64](#uint64) | required | Number of errors encountered while sending. |
-| controlMessageIdentifier | [UUID](#events.UUID) | optional | The id of the control message which requested this heartbeat |
 
 
 <a name="http.proto"/>

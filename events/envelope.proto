@@ -2,7 +2,6 @@ package events;
 option java_package = "org.cloudfoundry.dropsonde.events";
 option java_outer_classname = "EventFactory";
 
-import "heartbeat.proto";
 import "http.proto";
 import "log.proto";
 import "metric.proto";
@@ -12,7 +11,7 @@ import "error.proto";
 message Envelope {
     /// Type of the wrapped event.
     enum EventType {
-        Heartbeat = 1;
+        // Removed Heartbeat at position 1
         HttpStart = 2;
         HttpStop = 3;
         HttpStartStop = 4;
@@ -33,7 +32,7 @@ message Envelope {
     optional string index = 15;               /// Index of job (used to uniquely identify source).
     optional string ip = 16;                  /// IP address (used to uniquely identify source).
 
-    optional Heartbeat heartbeat = 3;
+    // Removed Heartbeat at position 3
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;
     optional HttpStartStop httpStartStop = 7;
