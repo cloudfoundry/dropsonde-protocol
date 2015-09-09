@@ -22,9 +22,17 @@ Please see the following for detailed descriptions of each type:
 
 Code generation for Go has moved to the [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library.
 
+### Java
+
+1. Build the go code first (see above) so that all the imports are available
+
+2. Generate the Java code (optionally providing a target path as a directory)
+   ```
+   ./generate-java.sh [TARGET_PATH]
+   ```
 ### Other languages
 
-For C++, Java and Python, Google provides [tutorials](https://developers.google.com/protocol-buffers/docs/tutorials).
+For C++ and Python, Google provides [tutorials](https://developers.google.com/protocol-buffers/docs/tutorials).
 
 Please see [this list](https://github.com/google/protobuf/wiki/Third-Party-Add-ons#Programming_Languages) for working with protocol buffers in other languages.
 

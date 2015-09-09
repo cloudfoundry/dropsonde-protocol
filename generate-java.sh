@@ -2,6 +2,7 @@
 
 dir_resolve()
 {
+"$1"!="" && mkdir -p "$1"
 cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any error messages but return exit status
 echo "`pwd -P`" # output full, link-resolved path
 }
@@ -18,6 +19,5 @@ fi
 
 pushd events
 mkdir -p $TARGET
-protoc -I=. --java_out=$TARGET *.proto
+protoc -I=. --java_out=$TARGET --proto_path=$GOPATH/src:$GOPATH/src/github.com/gogo/protobuf/protobuf:. *.proto
 popd
-
