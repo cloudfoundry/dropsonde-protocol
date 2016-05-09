@@ -32,6 +32,8 @@ message Envelope {
     optional string index = 15;               /// Index of job (used to uniquely identify source).
     optional string ip = 16;                  /// IP address (used to uniquely identify source).
 
+    map<string, string> tags = 17;            /// key/value tags to include additional identifying information.
+
     // Removed Heartbeat at position 3
     optional HttpStart httpStart = 4;
     optional HttpStop httpStop = 5;

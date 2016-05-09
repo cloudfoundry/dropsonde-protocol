@@ -4,6 +4,7 @@
 ## Table of Contents
 * [envelope.proto](#envelope.proto)
  * [Envelope](#events.Envelope)
+ * [Envelope.TagsEntry](#events.Envelope.TagsEntry)
  * [Envelope.EventType](#events.Envelope.EventType)
 * [error.proto](#error.proto)
  * [Error](#events.Error)
@@ -42,6 +43,7 @@ Envelope wraps an Event and adds metadata.
 | job | [string](#string) | optional | Job name (used to uniquely identify source). |
 | index | [string](#string) | optional | Index of job (used to uniquely identify source). |
 | ip | [string](#string) | optional | IP address (used to uniquely identify source). |
+| tags | [Envelope.TagsEntry](#events.Envelope.TagsEntry) | repeated | key/value tags to include additional identifying information. |
 | httpStart | [HttpStart](#events.HttpStart) | optional |  |
 | httpStop | [HttpStop](#events.HttpStop) | optional |  |
 | httpStartStop | [HttpStartStop](#events.HttpStartStop) | optional |  |
@@ -50,6 +52,15 @@ Envelope wraps an Event and adds metadata.
 | counterEvent | [CounterEvent](#events.CounterEvent) | optional |  |
 | error | [Error](#events.Error) | optional |  |
 | containerMetric | [ContainerMetric](#events.ContainerMetric) | optional |  |
+
+<a name="events.Envelope.TagsEntry"/>
+### Envelope.TagsEntry
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| key | [string](#string) | optional |  |
+| value | [string](#string) | optional |  |
 
 
 <a name="events.Envelope.EventType"/>
@@ -122,8 +133,7 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | userAgent | [string](#string) | required | Contents of the UserAgent header on the request. |
 | statusCode | [int32](#int32) | required | Status code returned with the response to the request. |
 | contentLength | [int64](#int64) | required | Length of response (bytes). |
-| parentRequestId | [UUID](#events.UUID) | optional | If this request was made in order to service an incoming request, this field should track the ID of the parent. |
-| applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
+| applicationId | [UUID](#events.UUID) | optional | 11 used to be ParentRequestIDIf this request was made in relation to an appliciation, this field should track that application's ID. |
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
 
@@ -153,6 +163,45 @@ HTTP method.
 | PUT | 3 |  |
 | DELETE | 4 |  |
 | HEAD | 5 |  |
+| ACL | 6 |  |
+| BASELINE_CONTROL | 7 |  |
+| BIND | 8 |  |
+| CHECKIN | 9 |  |
+| CHECKOUT | 10 |  |
+| CONNECT | 11 |  |
+| COPY | 12 |  |
+| DEBUG | 13 |  |
+| LABEL | 14 |  |
+| LINK | 15 |  |
+| LOCK | 16 |  |
+| MERGE | 17 |  |
+| MKACTIVITY | 18 |  |
+| MKCALENDAR | 19 |  |
+| MKCOL | 20 |  |
+| MKREDIRECTREF | 21 |  |
+| MKWORKSPACE | 22 |  |
+| MOVE | 23 |  |
+| OPTIONS | 24 |  |
+| ORDERPATCH | 25 |  |
+| PATCH | 26 |  |
+| PRI | 27 |  |
+| PROPFIND | 28 |  |
+| PROPPATCH | 29 |  |
+| REBIND | 30 |  |
+| REPORT | 31 |  |
+| SEARCH | 32 |  |
+| SHOWMETHOD | 33 |  |
+| SPACEJUMP | 34 |  |
+| TEXTSEARCH | 35 |  |
+| TRACE | 36 |  |
+| TRACK | 37 |  |
+| UNBIND | 38 |  |
+| UNCHECKOUT | 39 |  |
+| UNLINK | 40 |  |
+| UNLOCK | 41 |  |
+| UPDATE | 42 |  |
+| UPDATEREDIRECTREF | 43 |  |
+| VERSION_CONTROL | 44 |  |
 
 <a name="events.PeerType"/>
 ### PeerType

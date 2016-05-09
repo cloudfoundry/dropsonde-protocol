@@ -18,6 +18,8 @@ Please see the following for detailed descriptions of each type:
 
 ## Generating code
 
+Note: due to [maps not being supported in protoc v2.X](https://github.com/google/protobuf/issues/799#issuecomment-138207911), the proto definitions in this repository require protoc v3.0.0 or higher.
+
 ### Go
 
 Code generation for Go has moved to the [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library.
