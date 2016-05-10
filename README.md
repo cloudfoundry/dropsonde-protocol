@@ -7,10 +7,10 @@ It is a goal of the system to reduce the need for low-level metric events (e.g. 
 This protocol forms the backbone of the [Doppler](https://github.com/cloudfoundry/loggregator) system of Cloud Foundry.
 
 ## Message types
+
 Please see the following for detailed descriptions of each type:
 
 * [events README](events/README.md)
-
 
 ## Library using this protocol
 
@@ -18,7 +18,7 @@ Please see the following for detailed descriptions of each type:
 
 ## Generating code
 
-Note: due to [maps not being supported in protoc v2.X](https://github.com/google/protobuf/issues/799#issuecomment-138207911), the proto definitions in this repository require protoc v3.0.0 or higher.
+Note: Due to [maps not being supported in protoc v2.X](https://github.com/google/protobuf/issues/799#issuecomment-138207911), the proto definitions in this repository require protoc v3.0.0 or higher.
 
 ### Go
 
@@ -32,6 +32,7 @@ Code generation for Go has moved to the [Sonde-Go](https://github.com/cloudfound
    ```
    ./generate-java.sh [TARGET_PATH]
    ```
+
 ### Other languages
 
 For C++ and Python, Google provides [tutorials](https://developers.google.com/protocol-buffers/docs/tutorials).
@@ -39,15 +40,15 @@ For C++ and Python, Google provides [tutorials](https://developers.google.com/pr
 Please see [this list](https://github.com/google/protobuf/wiki/Third-Party-Add-ons#Programming_Languages) for working with protocol buffers in other languages.
 
 ### Message documentation
+
 Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run:
 ```
 cd events
-protoc --doc_out=markdown,README.md:. *.proto
-cd ../control
 protoc --doc_out=markdown,README.md:. *.proto
 ```
 
 ## Communication protocols
 
 ### Event emission
+
 Dropsonde is intended to be a "fire and forget" protocol, in the sense that an emitter should send events to its receiver with no expectation of acknowledgement. There is no "handshake" step; the emitter simply begins emitting to a known address of an expected recipient. 
