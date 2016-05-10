@@ -1,6 +1,6 @@
 # dropsonde-protocol
 
-Dropsonde is a two-way protocol for emitting events and metrics in one direction, and out-of-band control messages in the other. Messages are encoded in the Google [Protocol Buffer](https://developers.google.com/protocol-buffers) binary wire format.
+Dropsonde is a two-way protocol for emitting events and metrics in one direction. Messages are encoded in the Google [Protocol Buffer](https://developers.google.com/protocol-buffers) binary wire format.
 
 It is a goal of the system to reduce the need for low-level metric events (e.g. `ValueMetric` and `CounterEvent` messages). Though in the early stages, we include types such as `HttpStartEvent`, `HttpStopEvent` and `HttpStartStopEvent` to allow metric generation and aggregation at a higher level of abstraction, and to offload the work of aggregation to downstream receivers. Emitting applications should focus on delivering events, not processing them or computing statistics.
 
