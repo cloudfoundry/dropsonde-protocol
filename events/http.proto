@@ -106,5 +106,5 @@ message HttpStartStop {
     optional UUID applicationId = 12;   /// If this request was made in relation to an appliciation, this field should track that application's ID.
     optional int32 instanceIndex = 13;  /// Index of the application instance.
     optional string instanceId = 14;    /// ID of the application instance.
-    optional string forwarded = 15;     /// This contains http forwarded-for [x-forwarded-for] header from the request.
+    repeated string forwarded = 15;     /// This contains http forwarded-for [x-forwarded-for] header from the request.
 }

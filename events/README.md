@@ -152,7 +152,7 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | applicationId | [UUID](#events.UUID) | optional | 11 used to be ParentRequestID which has been deprecated. If this request was made in relation to an appliciation, this field should track that application's ID. |
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
-| forwarded | [string](#string) | optional | This contains http forwarded-for [x-forwarded-for] header from the request. |
+| forwarded | [string](#string) | repeated | This contains http forwarded-for [x-forwarded-for] header from the request. |
 
 
 <a name="events.HttpStop"/>
