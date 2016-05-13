@@ -44,6 +44,7 @@ Envelope wraps an Event and adds metadata.
 | deployment | [string](#string) | optional | Deployment name (used to uniquely identify source). |
 | job | [string](#string) | optional | Job name (used to uniquely identify source). |
 | index | [string](#string) | optional | Index of job (used to uniquely identify source). |
+| id | [string](#string) | optional | Id of job instance (used to uniquely identify source). |
 | ip | [string](#string) | optional | IP address (used to uniquely identify source). |
 | tags | [Envelope.TagsEntry](#events.Envelope.TagsEntry) | repeated | key/value tags to include additional identifying information. |
 | httpStart | [HttpStart](#events.HttpStart) | optional |  |
