@@ -30,8 +30,6 @@
 
 ## envelope.proto
 
-
-
 <a name="events.Envelope"/>
 ### Envelope
 Envelope wraps an Event and adds metadata.
@@ -55,7 +53,6 @@ Envelope wraps an Event and adds metadata.
 | error | [Error](#events.Error) | optional |  |
 | containerMetric | [ContainerMetric](#events.ContainerMetric) | optional |  |
 
-
 <a name="events.Envelope.TagsEntry"/>
 ### Envelope.TagsEntry
 
@@ -64,7 +61,6 @@ Envelope wraps an Event and adds metadata.
 | ----- | ---- | ----- | ----------- |
 | key | [string](#string) | optional |  |
 | value | [string](#string) | optional |  |
-
 
 
 <a name="events.Envelope.EventType"/>
@@ -82,15 +78,10 @@ Type of the wrapped event.
 | Error | 8 |  |
 | ContainerMetric | 9 |  |
 
-
-
-
 <a name="error.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## error.proto
-
-
 
 <a name="events.Error"/>
 ### Error
@@ -103,16 +94,10 @@ An Error event represents an error in the originating process.
 | message | [string](#string) | required | Error description (preferably human-readable). |
 
 
-
-
-
-
 <a name="http.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## http.proto
-
-
 
 <a name="events.HttpStart"/>
 ### HttpStart
@@ -132,7 +117,6 @@ An HttpStart event is emitted when a client sends a request (or immediately when
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
 
-
 <a name="events.HttpStartStop"/>
 ### HttpStartStop
 An HttpStartStop event represents the whole lifecycle of an HTTP request.
@@ -149,11 +133,10 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | userAgent | [string](#string) | required | Contents of the UserAgent header on the request. |
 | statusCode | [int32](#int32) | required | Status code returned with the response to the request. |
 | contentLength | [int64](#int64) | required | Length of response (bytes). |
-| applicationId | [UUID](#events.UUID) | optional | 11 used to be ParentRequestID which has been deprecated. If this request was made in relation to an appliciation, this field should track that application's ID. |
+| applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
 | forwarded | [string](#string) | repeated | This contains http forwarded-for [x-forwarded-for] header from the request. |
-
 
 <a name="events.HttpStop"/>
 ### HttpStop
@@ -168,7 +151,6 @@ An HttpStop event is emitted when a client receives a response to its request (o
 | statusCode | [int32](#int32) | required | Status code returned with the response to the request. |
 | contentLength | [int64](#int64) | required | Length of response (bytes). |
 | applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
-
 
 
 <a name="events.Method"/>
@@ -231,15 +213,10 @@ Type of peer handling request.
 | Client | 1 | Request is made by this process. |
 | Server | 2 | Request is received by this process. |
 
-
-
-
 <a name="log.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## log.proto
-
-
 
 <a name="events.LogMessage"/>
 ### LogMessage
@@ -255,7 +232,6 @@ A LogMessage contains a &quot;log line&quot; and associated metadata.
 | source_instance | [string](#string) | optional | Instance that emitted the message. |
 
 
-
 <a name="events.LogMessage.MessageType"/>
 ### LogMessage.MessageType
 MessageType stores the destination of the message (corresponding to STDOUT or STDERR).
@@ -265,15 +241,10 @@ MessageType stores the destination of the message (corresponding to STDOUT or ST
 | OUT | 1 |  |
 | ERR | 2 |  |
 
-
-
-
 <a name="metric.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## metric.proto
-
-
 
 <a name="events.ContainerMetric"/>
 ### ContainerMetric
@@ -287,7 +258,6 @@ A ContainerMetric records resource usage of an app in a container.
 | memoryBytes | [uint64](#uint64) | required | Bytes of memory used. |
 | diskBytes | [uint64](#uint64) | required | Bytes of disk used. |
 
-
 <a name="events.CounterEvent"/>
 ### CounterEvent
 A CounterEvent represents the increment of a counter. It contains only the change in the value; it is the responsibility of downstream consumers to maintain the value of the counter.
@@ -297,7 +267,6 @@ A CounterEvent represents the increment of a counter. It contains only the chang
 | name | [string](#string) | required | Name of the counter. Must be consistent for downstream consumers to associate events semantically. |
 | delta | [uint64](#uint64) | required | Amount by which to increment the counter. |
 | total | [uint64](#uint64) | optional | Total value of the counter. This will be overridden by Metron, which internally tracks the total of each named Counter it receives. |
-
 
 <a name="events.ValueMetric"/>
 ### ValueMetric
@@ -310,16 +279,10 @@ A ValueMetric indicates the value of a metric at an instant in time.
 | unit | [string](#string) | required | Unit of the metric. Please see http://metrics20.org/spec/#units for ideas; SI units/prefixes are recommended where applicable. Should be consistent for the life of the metric (consumers are expected to report, but not interpret, prefixes). |
 
 
-
-
-
-
 <a name="uuid.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## uuid.proto
-
-
 
 <a name="events.UUID"/>
 ### UUID
@@ -331,10 +294,6 @@ The bytes of the UUID should be packed in little-endian **byte** (not bit) order
 | ----- | ---- | ----- | ----------- |
 | low | [uint64](#uint64) | required |  |
 | high | [uint64](#uint64) | required |  |
-
-
-
-
 
 
 
