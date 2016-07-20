@@ -51,5 +51,4 @@ protoc --doc_out=markdown,README.md:. *.proto
 
 ### Event emission
 
-Dropsonde is intended to be a "fire and forget" protocol, in the sense that an emitter should send events to its receiver with no expectation of acknowledgement. There is no "handshake" step; the emitter simply begins emitting to a known address of an expected recipient. 
-
+Dropsonde is intended to be a "fire and forget" protocol, in the sense that an emitter should send events to its receiver with no expectation of acknowledgement. There is no "handshake" step; the emitter simply begins emitting to a known address of an expected recipient.
