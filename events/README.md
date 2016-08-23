@@ -9,9 +9,7 @@
 * [error.proto](#error.proto)
  * [Error](#events.Error)
 * [http.proto](#http.proto)
- * [HttpStart](#events.HttpStart)
  * [HttpStartStop](#events.HttpStartStop)
- * [HttpStop](#events.HttpStop)
  * [Method](#events.Method)
  * [PeerType](#events.PeerType)
 * [log.proto](#log.proto)
@@ -46,8 +44,6 @@ Envelope wraps an Event and adds metadata.
 | index | [string](#string) | optional | Index of job (used to uniquely identify source). |
 | ip | [string](#string) | optional | IP address (used to uniquely identify source). |
 | tags | [Envelope.TagsEntry](#events.Envelope.TagsEntry) | repeated | key/value tags to include additional identifying information. |
-| httpStart | [HttpStart](#events.HttpStart) | optional |  |
-| httpStop | [HttpStop](#events.HttpStop) | optional |  |
 | httpStartStop | [HttpStartStop](#events.HttpStartStop) | optional |  |
 | logMessage | [LogMessage](#events.LogMessage) | optional |  |
 | valueMetric | [ValueMetric](#events.ValueMetric) | optional |  |
@@ -73,8 +69,6 @@ Type of the wrapped event.
 
 | Name | Number | Description |
 | ---- | ------ | ----------- |
-| HttpStart | 2 |  |
-| HttpStop | 3 |  |
 | HttpStartStop | 4 |  |
 | LogMessage | 5 |  |
 | ValueMetric | 6 |  |
@@ -114,25 +108,6 @@ An Error event represents an error in the originating process.
 
 
 
-<a name="events.HttpStart"/>
-### HttpStart
-An HttpStart event is emitted when a client sends a request (or immediately when a server receives the request).
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| timestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was sent (by a client) or received (by a server). |
-| requestId | [UUID](#events.UUID) | required | ID for tracking lifecycle of request. |
-| peerType | [PeerType](#events.PeerType) | required | Role of the emitting process in the request cycle. |
-| method | [Method](#events.Method) | required | Method of the request. |
-| uri | [string](#string) | required | Destination of the request. |
-| remoteAddress | [string](#string) | required | Remote address of the request. (For a server, this should be the origin of the request.) |
-| userAgent | [string](#string) | required | Contents of the UserAgent header on the request. |
-| parentRequestId | [UUID](#events.UUID) | optional | If this request was made in order to service an incoming request, this field should track the ID of the parent. |
-| applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
-| instanceIndex | [int32](#int32) | optional | Index of the application instance. |
-| instanceId | [string](#string) | optional | ID of the application instance. |
-
-
 <a name="events.HttpStartStop"/>
 ### HttpStartStop
 An HttpStartStop event represents the whole lifecycle of an HTTP request.
@@ -141,7 +116,7 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | ----- | ---- | ----- | ----------- |
 | startTimestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was sent (by a client) or received (by a server). |
 | stopTimestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was received. |
-| requestId | [UUID](#events.UUID) | required | ID for tracking lifecycle of request. Should match requestId of a HttpStart event. |
+| requestId | [UUID](#events.UUID) | required | ID for tracking lifecycle of request. |
 | peerType | [PeerType](#events.PeerType) | required | Role of the emitting process in the request cycle. |
 | method | [Method](#events.Method) | required | Method of the request. |
 | uri | [string](#string) | required | Destination of the request. |
@@ -153,21 +128,6 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
 | forwarded | [string](#string) | repeated | This contains http forwarded-for [x-forwarded-for] header from the request. |
-
-
-<a name="events.HttpStop"/>
-### HttpStop
-An HttpStop event is emitted when a client receives a response to its request (or when a server completes its handling and returns a response).
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| timestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was received. |
-| uri | [string](#string) | required | URI of request. |
-| requestId | [UUID](#events.UUID) | required | ID for tracking lifecycle of request. Should match requestId of a HttpStart event. |
-| peerType | [PeerType](#events.PeerType) | required | Role of the emitting process in the request cycle. |
-| statusCode | [int32](#int32) | required | Status code returned with the response to the request. |
-| contentLength | [int64](#int64) | required | Length of response (bytes). |
-| applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application's ID. |
 
 
 

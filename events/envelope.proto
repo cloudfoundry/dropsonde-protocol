@@ -12,8 +12,8 @@ message Envelope {
     /// Type of the wrapped event.
     enum EventType {
         // Removed Heartbeat at position 1
-        HttpStart = 2;
-        HttpStop = 3;
+        // Removed HttpStart at position 2
+        // Removed HttpStop at position 3
         HttpStartStop = 4;
         LogMessage = 5;
         ValueMetric = 6;
@@ -35,8 +35,8 @@ message Envelope {
     map<string, string> tags = 17;            /// key/value tags to include additional identifying information.
 
     // Removed Heartbeat at position 3
-    optional HttpStart httpStart = 4;
-    optional HttpStop httpStop = 5;
+    // Removed HttpStart at position 4
+    // Removed HttpStop at position 5
     optional HttpStartStop httpStartStop = 7;
     optional LogMessage logMessage = 8;
     optional ValueMetric valueMetric = 9;
