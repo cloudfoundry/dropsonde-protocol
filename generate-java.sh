@@ -2,9 +2,9 @@
 
 dir_resolve()
 {
-"$1"!="" && mkdir -p "$1"
-cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any error messages but return exit status
-echo "`pwd -P`" # output full, link-resolved path
+    [ "$1" != "" ] && mkdir -p "$1"
+    cd "$1" 2>/dev/null || return $?  # cd to desired directory; if fail, quell any error messages but return exit status
+    echo "`pwd -P`" # output full, link-resolved path
 }
 
 set -e
