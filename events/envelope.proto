@@ -30,6 +30,7 @@ message Envelope {
     optional string deployment = 13;          /// Deployment name (used to uniquely identify source).
     optional string job = 14;                 /// Job name (used to uniquely identify source).
     optional string index = 15;               /// Index of job (used to uniquely identify source).
+    optional string id = 18;                  /// Id of job instance (used to uniquely identify source).
     optional string ip = 16;                  /// IP address (used to uniquely identify source).
 
     map<string, string> tags = 17;            /// key/value tags to include additional identifying information.
@@ -44,4 +45,3 @@ message Envelope {
     optional Error error = 11;
     optional ContainerMetric containerMetric = 12;
 }
-
