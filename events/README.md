@@ -243,7 +243,7 @@ A ContainerMetric records resource usage of an app in a container.
 | ----- | ---- | ----- | ----------- |
 | applicationId | [string](#string) | required | ID of the contained application. |
 | instanceIndex | [int32](#int32) | required | Instance index of the contained application. (This, with applicationId, should uniquely identify a container.) |
-| cpuPercentage | [double](#double) | required | CPU used, on a scale of 0 to 100. |
+| cpuPercentage | [double](#double) | required | CPU based on number of cores. |
 | memoryBytes | [uint64](#uint64) | required | Bytes of memory used. |
 | diskBytes | [uint64](#uint64) | required | Bytes of disk used. |
 | memoryBytesQuota | [uint64](#uint64) | optional | Maximum bytes of memory allocated to container. |
