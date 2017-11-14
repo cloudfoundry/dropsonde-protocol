@@ -312,3 +312,5 @@ The bytes of the UUID should be packed in little-endian **byte** (not bit) order
 | <a name="bool"/> bool |  | bool | boolean | boolean |
 | <a name="string"/> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode |
 | <a name="bytes"/> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str |
+
+<p align="right"><a href="#top">Top</a></p>
