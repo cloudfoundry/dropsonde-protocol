@@ -29,9 +29,8 @@
 ## envelope.proto
 
 
-
-<a name="events.Envelope"/>
 ### Envelope
+<a name="events.Envelope"/>
 Envelope wraps an Event and adds metadata.
 
 | Field | Type | Label | Description |
@@ -52,9 +51,8 @@ Envelope wraps an Event and adds metadata.
 | containerMetric | [ContainerMetric](#events.ContainerMetric) | optional |  |
 
 
-<a name="events.Envelope.TagsEntry"/>
 ### Envelope.TagsEntry
-
+<a name="events.Envelope.TagsEntry"/>
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
@@ -63,8 +61,8 @@ Envelope wraps an Event and adds metadata.
 
 
 
-<a name="events.Envelope.EventType"/>
 ### Envelope.EventType
+<a name="events.Envelope.EventType"/>
 Type of the wrapped event.
 
 | Name | Number | Description |
@@ -77,17 +75,15 @@ Type of the wrapped event.
 | ContainerMetric | 9 |  |
 
 
-
-
-<a name="error.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## error.proto
+<a name="error.proto"/>
 
 
 
-<a name="events.Error"/>
 ### Error
+<a name="events.Error"/>
 An Error event represents an error in the originating process.
 
 | Field | Type | Label | Description |
@@ -97,19 +93,15 @@ An Error event represents an error in the originating process.
 | message | [string](#string) | required | Error description (preferably human-readable). |
 
 
-
-
-
-
-<a name="http.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## http.proto
+<a name="http.proto"/>
 
 
 
-<a name="events.HttpStartStop"/>
 ### HttpStartStop
+<a name="events.HttpStartStop"/>
 An HttpStartStop event represents the whole lifecycle of an HTTP request.
 
 | Field | Type | Label | Description |
@@ -131,8 +123,8 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 
 
 
-<a name="events.Method"/>
 ### Method
+<a name="events.Method"/>
 HTTP method.
 
 | Name | Number | Description |
@@ -182,8 +174,8 @@ HTTP method.
 | UPDATEREDIRECTREF | 43 |  |
 | VERSION_CONTROL | 44 |  |
 
-<a name="events.PeerType"/>
 ### PeerType
+<a name="events.PeerType"/>
 Type of peer handling request.
 
 | Name | Number | Description |
@@ -194,15 +186,15 @@ Type of peer handling request.
 
 
 
-<a name="log.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## log.proto
+<a name="log.proto"/>
 
 
 
-<a name="events.LogMessage"/>
 ### LogMessage
+<a name="events.LogMessage"/>
 A LogMessage contains a &quot;log line&quot; and associated metadata.
 
 | Field | Type | Label | Description |
@@ -216,8 +208,8 @@ A LogMessage contains a &quot;log line&quot; and associated metadata.
 
 
 
-<a name="events.LogMessage.MessageType"/>
 ### LogMessage.MessageType
+<a name="events.LogMessage.MessageType"/>
 MessageType stores the destination of the message (corresponding to STDOUT or STDERR).
 
 | Name | Number | Description |
@@ -228,15 +220,15 @@ MessageType stores the destination of the message (corresponding to STDOUT or ST
 
 
 
-<a name="metric.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## metric.proto
+<a name="metric.proto"/>
 
 
 
-<a name="events.ContainerMetric"/>
 ### ContainerMetric
+<a name="events.ContainerMetric"/>
 A ContainerMetric records resource usage of an app in a container.
 
 | Field | Type | Label | Description |
@@ -250,8 +242,8 @@ A ContainerMetric records resource usage of an app in a container.
 | diskBytesQuota | [uint64](#uint64) | optional | Maximum bytes of disk allocated to container. |
 
 
-<a name="events.CounterEvent"/>
 ### CounterEvent
+<a name="events.CounterEvent"/>
 A CounterEvent represents the increment of a counter. It contains only the change in the value; it is the responsibility of downstream consumers to maintain the value of the counter.
 
 | Field | Type | Label | Description |
@@ -261,8 +253,8 @@ A CounterEvent represents the increment of a counter. It contains only the chang
 | total | [uint64](#uint64) | optional | Total value of the counter. This will be overridden by Metron, which internally tracks the total of each named Counter it receives. |
 
 
-<a name="events.ValueMetric"/>
 ### ValueMetric
+<a name="events.ValueMetric"/>
 A ValueMetric indicates the value of a metric at an instant in time.
 
 | Field | Type | Label | Description |
@@ -276,15 +268,15 @@ A ValueMetric indicates the value of a metric at an instant in time.
 
 
 
-<a name="uuid.proto"/>
 <p align="right"><a href="#top">Top</a></p>
 
 ## uuid.proto
+<a name="uuid.proto"/>
 
 
 
-<a name="events.UUID"/>
 ### UUID
+<a name="events.UUID"/>
 Type representing a 128-bit UUID.
 
 The bytes of the UUID should be packed in little-endian **byte** (not bit) order. For example, the UUID `f47ac10b-58cc-4372-a567-0e02b2c3d479` should be encoded as `UUID{ low: 0x7243cc580bc17af4, high: 0x79d4c3b2020e67a5 }`
@@ -300,8 +292,8 @@ The bytes of the UUID should be packed in little-endian **byte** (not bit) order
 
 
 
-<a name="scalar-value-types"/>
 ## Scalar Value Types
+<a name="scalar-value-types"/>
 
 | .proto Type | Notes | C++ Type | Java Type | Python Type |
 | ----------- | ----- | -------- | --------- | ----------- |
@@ -320,3 +312,5 @@ The bytes of the UUID should be packed in little-endian **byte** (not bit) order
 | <a name="bool"/> bool |  | bool | boolean | boolean |
 | <a name="string"/> string | A string must always contain UTF-8 encoded or 7-bit ASCII text. | string | String | str/unicode |
 | <a name="bytes"/> bytes | May contain any arbitrary sequence of bytes. | string | ByteString | str |
+
+<p align="right"><a href="#top">Top</a></p>
