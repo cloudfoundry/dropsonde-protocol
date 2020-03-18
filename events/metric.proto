@@ -29,4 +29,7 @@ message CounterEvent {
     required uint64 diskBytes = 5;        /// Bytes of disk used.
     optional uint64 memoryBytesQuota = 6; /// Maximum bytes of memory allocated to container.
     optional uint64 diskBytesQuota = 7;   /// Maximum bytes of disk allocated to container.
+    optional uint64 absoluteCPUUsage = 8; /// CPU time used by AI. 
+    optional uint64 absoluteCPUEntitlement = 9; /// CPU time that the AI was entitled to use.
+    optional uint64 age = 10; /// Age of container, in nanoseconds.
  }
