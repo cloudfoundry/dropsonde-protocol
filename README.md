@@ -1,3 +1,5 @@
+If you have any questions, or want to get attention for a PR or issue please reach out on the [#logging-and-metrics channel in the cloudfoundry slack](https://cloudfoundry.slack.com/archives/CUW93AF3M)
+
 # dropsonde-protocol
 
 Dropsonde is a two-way protocol for emitting events and metrics in one direction. Messages are encoded in the Google [Protocol Buffer](https://developers.google.com/protocol-buffers) binary wire format.
