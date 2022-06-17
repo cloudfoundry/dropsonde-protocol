@@ -39,7 +39,7 @@ Or, from the base directory, where `$DST_DIR` is the desired destination:
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 protoc -I=events --go_out=. events/*.proto
-mv github.com/cloudfoundry/dropsonde/events/*.pb.go $DST_DIR
+mv github.com/cloudfoundry/sonde-go/events/*.pb.go $DST_DIR
 rm -rf github.com
 ```
 
