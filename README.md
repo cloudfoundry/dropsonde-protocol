@@ -20,33 +20,49 @@ Please see the following for detailed descriptions of each type:
 
 ## Generating code
 
-Note: Due to [maps not being supported in protoc v2.X](https://github.com/google/protobuf/issues/799#issuecomment-138207911), the proto definitions in this repository require protoc v3.0.0 or higher.
+### Setup
+
+Install protobuf.
+
+*Note: Due to [maps not being supported in protoc v2.X](https://github.com/google/protobuf/issues/799#issuecomment-138207911), the proto definitions in this repository require protoc v3.0.0 or higher.*
+
+On mac:
+```
+brew install protobuf
+```
 
 ### Go
 
-Code generation for Go has moved to the [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library.
+The [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library can be used instead.
+
+Or, from your working directory, where `$DST_DIR` is the desired destination:
+```
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+protoc --go_out=. dropsonde-protocol/events/*.proto
+mv github.com/cloudfoundry/sonde-go/events/*.pb.go $DST_DIR
+rm -rf github.com
+```
 
 ### Java
 
-1. Build the go code first (see above) so that all the imports are available
-
-2. Generate the Java code (optionally providing a target path as a directory)
-   ```
-   ./generate-java.sh [TARGET_PATH]
-   ```
+From your working directory, where `$DST_DIR` is the desired destination:
+```
+protoc --java_out=. dropsonde-protocol/events/*.proto
+mv org/cloudfoundry/dropsonde/events/*.java $DST_DIR
+rm -rf org
+```
 
 ### Other languages
 
 For C++ and Python, Google provides [tutorials](https://developers.google.com/protocol-buffers/docs/tutorials).
 
-Please see [this list](https://github.com/google/protobuf/wiki/Third-Party-Add-ons#Programming_Languages) for working with protocol buffers in other languages.
+Please see [this list](https://github.com/protocolbuffers/protobuf/blob/master/docs/third_party.md) for working with protocol buffers in other languages.
 
 ### Message documentation
 
-Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run:
+Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run the following from your working directory:
 ```
-cd events
-protoc --doc_out=markdown,README.md:. *.proto
+protoc --doc_out=markdown,README.md:dropsonde-protocol/events dropsonde-protocol/events/*.proto
 ```
 
 ## Communication protocols
