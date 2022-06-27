@@ -35,19 +35,19 @@ brew install protobuf
 
 The [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library can be used instead.
 
-Or, from the base directory, where `$DST_DIR` is the desired destination:
+Or, from your working directory, where `$DST_DIR` is the desired destination:
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-protoc --go_out=. events/*.proto
+protoc --go_out=. dropsonde-protocol/events/*.proto
 mv github.com/cloudfoundry/sonde-go/events/*.pb.go $DST_DIR
 rm -rf github.com
 ```
 
 ### Java
 
-From the base directory, where `$DST_DIR` is the desired destination:
+From your working directory, where `$DST_DIR` is the desired destination:
 ```
-protoc --java_out=. events/*.proto
+protoc --java_out=. dropsonde-protocol/events/*.proto
 mv org/cloudfoundry/dropsonde/events/*.java $DST_DIR
 rm -rf org
 ```
@@ -60,9 +60,9 @@ Please see [this list](https://github.com/protocolbuffers/protobuf/blob/master/d
 
 ### Message documentation
 
-Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run:
+Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run the following from your working directory:
 ```
-protoc --doc_out=markdown,README.md:events events/*.proto
+protoc --doc_out=markdown,README.md:dropsonde-protocol/events dropsonde-protocol/events/*.proto
 ```
 
 ## Communication protocols
