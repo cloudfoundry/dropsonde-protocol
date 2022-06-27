@@ -7,10 +7,10 @@ option go_package = "github.com/cloudfoundry/sonde-go/events";
 option java_package = "org.cloudfoundry.dropsonde.events";
 option java_outer_classname = "EventFactory";
 
-import "http.proto";
-import "log.proto";
-import "metric.proto";
-import "error.proto";
+import "events/http.proto";
+import "events/log.proto";
+import "events/metric.proto";
+import "events/error.proto";
 
 // Envelope wraps an Event and adds metadata.
 message Envelope {

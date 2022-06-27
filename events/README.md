@@ -3,46 +3,46 @@
 
 ## Table of Contents
 
-- [envelope.proto](#envelope-proto)
-    - [Envelope](#events-Envelope)
-    - [Envelope.TagsEntry](#events-Envelope-TagsEntry)
+- [events/envelope.proto](#events/envelope.proto)
+    - [Envelope](#events.Envelope)
+    - [Envelope.TagsEntry](#events.Envelope.TagsEntry)
   
-    - [Envelope.EventType](#events-Envelope-EventType)
+    - [Envelope.EventType](#events.Envelope.EventType)
   
-- [error.proto](#error-proto)
-    - [Error](#events-Error)
+- [events/error.proto](#events/error.proto)
+    - [Error](#events.Error)
   
-- [http.proto](#http-proto)
-    - [HttpStartStop](#events-HttpStartStop)
+- [events/http.proto](#events/http.proto)
+    - [HttpStartStop](#events.HttpStartStop)
   
-    - [Method](#events-Method)
-    - [PeerType](#events-PeerType)
+    - [Method](#events.Method)
+    - [PeerType](#events.PeerType)
   
-- [log.proto](#log-proto)
-    - [LogMessage](#events-LogMessage)
+- [events/log.proto](#events/log.proto)
+    - [LogMessage](#events.LogMessage)
   
-    - [LogMessage.MessageType](#events-LogMessage-MessageType)
+    - [LogMessage.MessageType](#events.LogMessage.MessageType)
   
-- [metric.proto](#metric-proto)
-    - [ContainerMetric](#events-ContainerMetric)
-    - [CounterEvent](#events-CounterEvent)
-    - [ValueMetric](#events-ValueMetric)
+- [events/metric.proto](#events/metric.proto)
+    - [ContainerMetric](#events.ContainerMetric)
+    - [CounterEvent](#events.CounterEvent)
+    - [ValueMetric](#events.ValueMetric)
   
-- [uuid.proto](#uuid-proto)
-    - [UUID](#events-UUID)
+- [events/uuid.proto](#events/uuid.proto)
+    - [UUID](#events.UUID)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="envelope-proto"></a>
+<a name="events/envelope.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## envelope.proto
+## events/envelope.proto
 
 
 
-<a name="events-Envelope"></a>
+<a name="events.Envelope"></a>
 
 ### Envelope
 Envelope wraps an Event and adds metadata.
@@ -51,26 +51,26 @@ Envelope wraps an Event and adds metadata.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | origin | [string](#string) | required | Unique description of the origin of this event. |
-| eventType | [Envelope.EventType](#events-Envelope-EventType) | required | Type of wrapped event. Only the optional field corresponding to the value of eventType should be set. |
+| eventType | [Envelope.EventType](#events.Envelope.EventType) | required | Type of wrapped event. Only the optional field corresponding to the value of eventType should be set. |
 | timestamp | [int64](#int64) | optional | UNIX timestamp (in nanoseconds) event was wrapped in this Envelope. |
 | deployment | [string](#string) | optional | Deployment name (used to uniquely identify source). |
 | job | [string](#string) | optional | Job name (used to uniquely identify source). |
 | index | [string](#string) | optional | Index of job (used to uniquely identify source). |
 | ip | [string](#string) | optional | IP address (used to uniquely identify source). |
-| tags | [Envelope.TagsEntry](#events-Envelope-TagsEntry) | repeated | key/value tags to include additional identifying information. |
-| httpStartStop | [HttpStartStop](#events-HttpStartStop) | optional |  |
-| logMessage | [LogMessage](#events-LogMessage) | optional |  |
-| valueMetric | [ValueMetric](#events-ValueMetric) | optional |  |
-| counterEvent | [CounterEvent](#events-CounterEvent) | optional |  |
-| error | [Error](#events-Error) | optional |  |
-| containerMetric | [ContainerMetric](#events-ContainerMetric) | optional |  |
+| tags | [Envelope.TagsEntry](#events.Envelope.TagsEntry) | repeated | key/value tags to include additional identifying information. |
+| httpStartStop | [HttpStartStop](#events.HttpStartStop) | optional |  |
+| logMessage | [LogMessage](#events.LogMessage) | optional |  |
+| valueMetric | [ValueMetric](#events.ValueMetric) | optional |  |
+| counterEvent | [CounterEvent](#events.CounterEvent) | optional |  |
+| error | [Error](#events.Error) | optional |  |
+| containerMetric | [ContainerMetric](#events.ContainerMetric) | optional |  |
 
 
 
 
 
 
-<a name="events-Envelope-TagsEntry"></a>
+<a name="events.Envelope.TagsEntry"></a>
 
 ### Envelope.TagsEntry
 
@@ -88,7 +88,7 @@ Envelope wraps an Event and adds metadata.
  
 
 
-<a name="events-Envelope-EventType"></a>
+<a name="events.Envelope.EventType"></a>
 
 ### Envelope.EventType
 Type of the wrapped event.
@@ -111,14 +111,14 @@ Type of the wrapped event.
 
 
 
-<a name="error-proto"></a>
+<a name="events/error.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## error.proto
+## events/error.proto
 
 
 
-<a name="events-Error"></a>
+<a name="events.Error"></a>
 
 ### Error
 An Error event represents an error in the originating process.
@@ -144,14 +144,14 @@ An Error event represents an error in the originating process.
 
 
 
-<a name="http-proto"></a>
+<a name="events/http.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## http.proto
+## events/http.proto
 
 
 
-<a name="events-HttpStartStop"></a>
+<a name="events.HttpStartStop"></a>
 
 ### HttpStartStop
 An HttpStartStop event represents the whole lifecycle of an HTTP request.
@@ -161,15 +161,15 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
 | ----- | ---- | ----- | ----------- |
 | startTimestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was sent (by a client) or received (by a server). |
 | stopTimestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the request was received. |
-| requestId | [UUID](#events-UUID) | required | ID for tracking lifecycle of request. |
-| peerType | [PeerType](#events-PeerType) | required | Role of the emitting process in the request cycle. |
-| method | [Method](#events-Method) | required | Method of the request. |
+| requestId | [UUID](#events.UUID) | required | ID for tracking lifecycle of request. |
+| peerType | [PeerType](#events.PeerType) | required | Role of the emitting process in the request cycle. |
+| method | [Method](#events.Method) | required | Method of the request. |
 | uri | [string](#string) | required | Destination of the request. |
 | remoteAddress | [string](#string) | required | Remote address of the request. (For a server, this should be the origin of the request.) |
 | userAgent | [string](#string) | required | Contents of the UserAgent header on the request. |
 | statusCode | [int32](#int32) | required | Status code returned with the response to the request. |
 | contentLength | [int64](#int64) | required | Length of response (bytes). |
-| applicationId | [UUID](#events-UUID) | optional | If this request was made in relation to an appliciation, this field should track that application&#39;s ID. |
+| applicationId | [UUID](#events.UUID) | optional | If this request was made in relation to an appliciation, this field should track that application&#39;s ID. |
 | instanceIndex | [int32](#int32) | optional | Index of the application instance. |
 | instanceId | [string](#string) | optional | ID of the application instance. |
 | forwarded | [string](#string) | repeated | This contains http forwarded-for [x-forwarded-for] header from the request. |
@@ -181,7 +181,7 @@ An HttpStartStop event represents the whole lifecycle of an HTTP request.
  
 
 
-<a name="events-Method"></a>
+<a name="events.Method"></a>
 
 ### Method
 HTTP method.
@@ -235,7 +235,7 @@ HTTP method.
 
 
 
-<a name="events-PeerType"></a>
+<a name="events.PeerType"></a>
 
 ### PeerType
 Type of peer handling request.
@@ -254,14 +254,14 @@ Type of peer handling request.
 
 
 
-<a name="log-proto"></a>
+<a name="events/log.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## log.proto
+## events/log.proto
 
 
 
-<a name="events-LogMessage"></a>
+<a name="events.LogMessage"></a>
 
 ### LogMessage
 A LogMessage contains a &#34;log line&#34; and associated metadata.
@@ -270,7 +270,7 @@ A LogMessage contains a &#34;log line&#34; and associated metadata.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | message | [bytes](#bytes) | required | Bytes of the log message. (Note that it is not required to be a single line.) |
-| message_type | [LogMessage.MessageType](#events-LogMessage-MessageType) | required | Type of the message (OUT or ERR). |
+| message_type | [LogMessage.MessageType](#events.LogMessage.MessageType) | required | Type of the message (OUT or ERR). |
 | timestamp | [int64](#int64) | required | UNIX timestamp (in nanoseconds) when the log was written. |
 | app_id | [string](#string) | optional | Application that emitted the message (or to which the application is related). |
 | source_type | [string](#string) | optional | Source of the message. For Cloud Foundry, this can be &#34;APP&#34;, &#34;RTR&#34;, &#34;DEA&#34;, &#34;STG&#34;, etc. |
@@ -283,7 +283,7 @@ A LogMessage contains a &#34;log line&#34; and associated metadata.
  
 
 
-<a name="events-LogMessage-MessageType"></a>
+<a name="events.LogMessage.MessageType"></a>
 
 ### LogMessage.MessageType
 MessageType stores the destination of the message (corresponding to STDOUT or STDERR).
@@ -302,14 +302,14 @@ MessageType stores the destination of the message (corresponding to STDOUT or ST
 
 
 
-<a name="metric-proto"></a>
+<a name="events/metric.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## metric.proto
+## events/metric.proto
 
 
 
-<a name="events-ContainerMetric"></a>
+<a name="events.ContainerMetric"></a>
 
 ### ContainerMetric
 A ContainerMetric records resource usage of an app in a container.
@@ -330,7 +330,7 @@ A ContainerMetric records resource usage of an app in a container.
 
 
 
-<a name="events-CounterEvent"></a>
+<a name="events.CounterEvent"></a>
 
 ### CounterEvent
 A CounterEvent represents the increment of a counter. It contains only the
@@ -349,7 +349,7 @@ maintain the value of the counter.
 
 
 
-<a name="events-ValueMetric"></a>
+<a name="events.ValueMetric"></a>
 
 ### ValueMetric
 A ValueMetric indicates the value of a metric at an instant in time.
@@ -375,14 +375,14 @@ A ValueMetric indicates the value of a metric at an instant in time.
 
 
 
-<a name="uuid-proto"></a>
+<a name="events/uuid.proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## uuid.proto
+## events/uuid.proto
 
 
 
-<a name="events-UUID"></a>
+<a name="events.UUID"></a>
 
 ### UUID
 Type representing a 128-bit UUID.

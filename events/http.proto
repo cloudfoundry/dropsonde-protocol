@@ -7,7 +7,7 @@ option go_package = "github.com/cloudfoundry/sonde-go/events";
 option java_package = "org.cloudfoundry.dropsonde.events";
 option java_outer_classname = "HttpFactory";
 
-import "uuid.proto";
+import "events/uuid.proto";
 
 // Type of peer handling request.
 enum PeerType {

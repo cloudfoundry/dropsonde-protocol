@@ -38,7 +38,7 @@ The [Sonde-Go](https://github.com/cloudfoundry/sonde-go) library can be used ins
 Or, from the base directory, where `$DST_DIR` is the desired destination:
 ```
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-protoc -I=events --go_out=. events/*.proto
+protoc --go_out=. events/*.proto
 mv github.com/cloudfoundry/sonde-go/events/*.pb.go $DST_DIR
 rm -rf github.com
 ```
@@ -47,7 +47,7 @@ rm -rf github.com
 
 From the base directory, where `$DST_DIR` is the desired destination:
 ```
-protoc -I=events --java_out=. events/*.proto
+protoc --java_out=. events/*.proto
 mv org/cloudfoundry/dropsonde/events/*.java $DST_DIR
 rm -rf org
 ```
@@ -62,8 +62,7 @@ Please see [this list](https://github.com/protocolbuffers/protobuf/blob/master/d
 
 Each package's documentation is auto-generated with [protoc-gen-doc](https://github.com/estan/protoc-gen-doc). After installing the tool, run:
 ```
-cd events
-protoc --doc_out=markdown,README.md:. *.proto
+protoc --doc_out=markdown,README.md:events events/*.proto
 ```
 
 ## Communication protocols
